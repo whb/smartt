@@ -1,0 +1,171 @@
+---
+import { Icon } from 'astro-icon/components';
+const { slides } = Astro.props;
+const taiwindTextColor = (color) => {
+  //return 'text-[' + color + ']';
+  return color;
+};
+---
+
+<div id="main_hero" class="w-full h-screen">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {
+        slides.map((item) => (
+          <div class="bg_custom_slide swiper-slide flex flex-col gap-4">
+            <span
+              class:list={['text-[5vw] lg:text-2xl uppercase', taiwindTextColor(item.text_color)]}
+              data-swiper-parallax-y="-600"
+              data-swiper-parallax-duration="500"
+            >
+              {item.kicker}
+            </span>
+
+            <h2
+              class:list={[
+                'mb-8 portrait:text-[10vw] md:portrait:text-[12vw] landscape:text-[12vh]  leading-[120%]',
+                taiwindTextColor(item.text_color),
+              ]}
+              data-swiper-parallax="-700"
+              data-swiper-parallax-duration="600"
+              style="transform: translate3d(0px, 0px, 0px);"
+            >
+              {item.title && <span class="tracking-tighter" set:html={item.title} />}
+              <span class:list={['portrait:text-[8vw] italic', taiwindTextColor(item.text_color)]}>
+                {item.highlight}
+              </span>
+            </h2>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="w-full absolute bottom-0 z-10 flex items-center justify-between p-8 pb-16">
+      <div class="flex flex-col gap-2">
+        <div class="swiper-pagination flex gap-2"></div>
+        <span class="font-bold font-futura">© XIANGLONG ZHIYUN 2023</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <Icon name="bi:arrow-left-circle-fill" class="swiper-button-prev text-4xl text-loco-red transition-all" />
+        <Icon name="bi:arrow-right-circle-fill" class="swiper-button-next text-4xl text-loco-red transition-all" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  @import url('https://fonts.cdnfonts.com/css/futura-condensed-pt');
+
+  .swiper-pagination-bullet {
+    width: 1rem;
+    background-color: #3c3c3c;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 4rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(32 38 178 / var(--tw-bg-opacity));
+  }
+
+  .swiper-button-disabled path {
+    fill-opacity: 0.4;
+  }
+</style>
+
+<style>
+  .swiper,
+  main {
+    position: relative;
+  }
+
+  .swiper {
+    height: 100%;
+    width: 100%;
+  }
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2rem 0 6rem;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .progress-bg {
+    background-color: #fff;
+  }
+
+  .pl-open-menu {
+    padding-left: 400px;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .swiper-slide {
+      justify-content: flex-start;
+      padding: 15vh 2rem 2rem;
+    }
+
+    .pl-open-menu {
+      padding-left: 2rem;
+    }
+  }
+
+  .text-loco-red {
+    --tw-text-opacity: 1;
+    color: rgb(246 76 113 / var(--tw-text-opacity));
+  }
+
+  .font-futura {
+    font-family: 'Futura Condensed PT', sans-serif;
+    font-weight: 200;
+  }
+</style>
+
+<script>
+  import { Swiper } from 'swiper';
+  import 'swiper/css';
+  import { Navigation, Pagination, Parallax } from 'swiper/modules';
+
+  new Swiper('.swiper', {
+    modules: [Navigation, Pagination, Parallax],
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    parallax: true,
+  });
+</script>
+
+<script define:vars={{ slides }}>
+  (function () {
+    //SELECTOR BACKGROUND DEPENDIENTO ORIENTACION
+    const bg_custom_slides = [...document.querySelectorAll('.bg_custom_slide')];
+
+    const setBackground = () => {
+      const w_height = window.innerHeight;
+      const w_width = window.innerWidth;
+
+      bg_custom_slides.map((x, index) => {
+        x.style.backgroundImage = w_width > w_height ? slides[index].background : slides[index].background_movil;
+      });
+    };
+
+    setBackground();
+    window.addEventListener('resize', () => {
+      setBackground();
+    });
+  })();
+</script>

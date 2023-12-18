@@ -51,6 +51,7 @@ export default defineConfig({
           'business-contact',
           'database',
         ],
+        bi: ['arrow-left-circle', 'arrow-right-circle', 'arrow-left-circle-fill', 'arrow-right-circle-fill'],
       },
     }),
 

@@ -10,8 +10,8 @@ site:
 metadata:
   title:
     default: 祥龙智运
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    template: '%s — 祥龙智运'
+  description: "祥龙智运网络货运平台实现全面数字化管理，强化运力整合，线路优化；为平台内车主、运输企业提供成本核算，车辆在线管控，金融服务等多项内容。"
   robots:
     index: true
     follow: true
@@ -23,12 +23,12 @@ metadata:
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@xlzy56'
+    site: '@xlzy56'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: zh-CN
   textDirection: ltr
 
 apps:

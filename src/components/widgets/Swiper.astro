@@ -47,8 +47,14 @@ const taiwindTextColor = (color) => {
       </div>
 
       <div class="flex items-center gap-2">
-        <Icon name="bi:arrow-left-circle-fill" class="swiper-button-prev text-4xl text-loco-red transition-all" />
-        <Icon name="bi:arrow-right-circle-fill" class="swiper-button-next text-4xl text-loco-red transition-all" />
+        <div class="swiper-button-prev text-4xl text-loco-red transition-all">
+          <Icon name="bi:arrow-left-circle" class="left-circle" />
+          <Icon name="bi:arrow-left-circle-fill" class="left-circle-fill" />
+        </div>
+        <div class="swiper-button-next text-4xl text-loco-red transition-all">
+          <Icon name="bi:arrow-right-circle" class="right-circle" />
+          <Icon name="bi:arrow-right-circle-fill" class="right-circle-fill" />
+        </div>
       </div>
     </div>
   </div>
@@ -73,8 +79,17 @@ const taiwindTextColor = (color) => {
     background-color: rgb(32 38 178 / var(--tw-bg-opacity));
   }
 
-  .swiper-button-disabled path {
-    fill-opacity: 0.4;
+  .left-circle-fill, .right-circle-fill {
+    display: block;
+  }
+  .swiper-button-disabled>.left-circle-fill,  .swiper-button-disabled>.right-circle-fill{
+    display: none;
+  }
+  .left-circle, .right-circle{
+    display: none;
+  }
+  .swiper-button-disabled>.left-circle, .swiper-button-disabled>.right-circle {
+    display: block;
   }
 </style>
 

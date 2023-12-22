@@ -7,15 +7,21 @@ import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
-  title: 'xlzy56 — 祥龙智运网络货运平台',
+  title: '祥龙智运',
   ignoreTitleTemplate: true,
 };
+
+import { getImage } from "astro:assets"
+import ferryBridge16x9 from "../assets/images/slider/ferrybridge-16x9.jpg"
+import ferryBridge9x16 from "../assets/images/slider/ferrybridge-9x16.jpg"
+const ferryBridge16x9Image = await getImage({ src: ferryBridge16x9 })
+const ferryBridge9x16Image = await getImage({ src: ferryBridge9x16 })
 
 const slides = [
   {
     kicker: '效率',
-    background: 'url("/images/slider_ri.webp")',
-    background_movil: 'url("/images/slider_ri_movil.webp")',
+    background: `url("${ferryBridge16x9Image.src}")`,
+    background_movil: `url("${ferryBridge9x16Image.src}")`,
     title: '城配干线大宗多维度运输<br><br>',
     highlight: '优化运力',
     text_color: 'text-white',

@@ -10,7 +10,7 @@ const { slides } = Astro.props;
         slides.map((item) => (
           <div class="bg_custom_slide swiper-slide flex flex-col gap-4">
             <span
-              class:list={['text-[5vw] lg:text-2xl uppercase', item.text_color]}
+              class:list={['text-[5vw] lg:text-2xl uppercase', `text-[${item.text_color}]`]}
               data-swiper-parallax-y="-600"
               data-swiper-parallax-duration="500"
             >
@@ -19,28 +19,25 @@ const { slides } = Astro.props;
 
             <h2
               class:list={[
-                'mb-8 portrait:text-[10vw] md:portrait:text-[12vw] landscape:text-[12vh]  leading-[120%]',
-                item.text_color,
+                'mb-8 portrait:text-[10vw] md:portrait:text-[12vw] landscape:text-[12vh] leading-[120%]',
+                `text-[${item.text_color}]`
               ]}
               data-swiper-parallax="-700"
               data-swiper-parallax-duration="600"
             >
               {item.title && <span class="tracking-tighter" set:html={item.title} />}
-              <span class:list={['portrait:text-[8vw] italic', item.text_color]}>{item.highlight}</span>
+              <span class:list={['portrait:text-[8vw] italic', `text-[${item.text_color}]`]}>{item.highlight}</span>
             </h2>
 
             <a
               data-swiper-parallax="-800"
               data-swiper-parallax-duration="700"
               href={item.btn_href}
-              class:list={[
-                'uppercase py-2 px-4 w-fit h-fit text-[4vw] lg:text-2xl flex gap-4 overflow-hidden font-bold',
-                item.btn_text_color,
-                item.btn_bg_color,
-              ]}
+              class='uppercase py-2 px-4 w-fit h-fit text-[4vw] lg:text-2xl flex gap-4 overflow-hidden font-bold' 
+              style=`--text_color:${item.btn_text_color};--bg_color: ${item.btn_bg_color};`
             >
               <p> 查看 </p>
-              <img src="/svg/flecha_diagonal.svg" alt="flecha" class="invert-0" />
+              <img src="/svg/flecha_diagonal.svg" alt="flecha" class=`${item.invert_arrow_color ? 'invert': 'invert-0'}` />
             </a>
           </div>
         ))
@@ -153,6 +150,11 @@ const { slides } = Astro.props;
   .font-futura {
     font-family: 'Futura Condensed PT', sans-serif;
     font-weight: 200;
+  }
+
+  a {
+    background-color: var(--bg_color);
+    color: var(--text_color);
   }
 </style>
 

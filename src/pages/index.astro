@@ -17,6 +17,16 @@ import ferryBridge9x16 from "../assets/images/slider/ferrybridge-9x16.jpg"
 const ferryBridge16x9Image = await getImage({ src: ferryBridge16x9 })
 const ferryBridge9x16Image = await getImage({ src: ferryBridge9x16 })
 
+import bergmanis16x9 from "../assets/images/slider/bergmanis-16x9.jpg"
+import bergmanis9x16 from "../assets/images/slider/bergmanis-9x16.jpg"
+const bergmanis16x9Image = await getImage({ src: bergmanis16x9 })
+const bergmanis9x16Image = await getImage({ src: bergmanis9x16 })
+
+import palomino16x9 from "../assets/images/slider/palomino-16x9.jpg"
+import palomino9x16 from "../assets/images/slider/palomino-9x16.jpg"
+const palomino16x9Image = await getImage({ src: palomino16x9 })
+const palomino9x16Image = await getImage({ src: palomino9x16 })
+
 const slides = [
   {
     kicker: '效率',
@@ -33,8 +43,8 @@ const slides = [
   },
   {
     kicker: '智慧',
-    background: 'url("/images/slider_tresguerras.webp")',
-    background_movil: 'url("/images/slider_tresguerras_movil.webp")',
+    background: `url("${bergmanis16x9Image.src}")`,
+    background_movil: `url("${bergmanis9x16Image.src}")`,
     title: 'Nos unimos <br>',
     highlight: 'al viaje',
     text_color: '#000',
@@ -46,8 +56,8 @@ const slides = [
   },
   {
     kicker: '科技',
-    background: 'url("/images/slider_tropper.webp")',
-    background_movil: 'url("/images/slider_tropper_movil.webp")',
+    background: `url("${palomino16x9Image.src}")`,
+    background_movil: `url("${palomino9x16Image.src}")`,
     title: 'Movemos <br>',
     highlight: 'personas',
     text_color: '#000',

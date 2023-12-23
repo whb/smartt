@@ -20,13 +20,17 @@ const { slides } = Astro.props;
             <h2
               class:list={[
                 'mb-8 portrait:text-[10vw] md:portrait:text-[12vw] landscape:text-[12vh] leading-[120%]',
-                `text-[${item.text_color}]`
+                'text-hex'
               ]}
+              style=`--text_color:${item.text_color};`
               data-swiper-parallax="-700"
               data-swiper-parallax-duration="600"
             >
               {item.title && <span class="tracking-tighter" set:html={item.title} />}
-              <span class:list={['portrait:text-[8vw] italic', `text-[${item.text_color}]`]}>{item.highlight}</span>
+              <span 
+                class:list={['portrait:text-[8vw] italic', 'text-hex']}
+                style=`--text_color:${item.text_color};`
+              >{item.highlight}</span>
             </h2>
 
             <a
@@ -154,6 +158,10 @@ const { slides } = Astro.props;
 
   a {
     background-color: var(--bg_color);
+    color: var(--text_color);
+  }
+
+  .text-hex {
     color: var(--text_color);
   }
 </style>

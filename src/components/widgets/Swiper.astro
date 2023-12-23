@@ -10,7 +10,8 @@ const { slides } = Astro.props;
         slides.map((item) => (
           <div class="bg_custom_slide swiper-slide flex flex-col gap-4">
             <span
-              class:list={['text-[5vw] lg:text-2xl uppercase', `text-[${item.text_color}]`]}
+              class:list={['text-[5vw] lg:text-2xl uppercase', 'text-hex']}
+              style=`--text_color:${item.text_color};`
               data-swiper-parallax-y="-600"
               data-swiper-parallax-duration="500"
             >
@@ -41,7 +42,7 @@ const { slides } = Astro.props;
               style=`--text_color:${item.btn_text_color};--bg_color: ${item.btn_bg_color};`
             >
               <p> 查看 </p>
-              <img src="/svg/flecha_diagonal.svg" alt="flecha" class=`${item.invert_arrow_color ? 'invert': 'invert-0'}` />
+              <img width="20" height="20" src="/svg/flecha_diagonal.svg" alt="flecha" class=`${item.invert_arrow_color ? 'invert': 'invert-0'}` />
             </a>
           </div>
         ))

@@ -91,7 +91,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     <!-- MENU OPTIONS -->
     <div
       id="content-menu"
-      class="content-menu flex h-fit lg:h-full flex-col justify-center items-end gap-4 lg:pl-32 lg:pr-8"
+      class="content-menu flex h-fit lg:h-full flex-col justify-center items-end gap-4 lg:pl-24 lg:pr-8"
     >
       <div>
         <a href="/"
@@ -200,6 +200,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     .open {
       top: 0;
     }
+  }
+
+  a {
+    font-size: 16px;
   }
 
   .cols-footer:where(.astro-MTXGG6PP) {

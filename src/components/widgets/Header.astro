@@ -4,6 +4,7 @@ import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
+import MenuButton from '~/components/ui/MenuButton.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
@@ -49,111 +50,200 @@ const {
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
-<header
-  class:list={[
-    { dark: isDark },
-    'fixed top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
-  ]}
-  {...id ? { id } : {}}
->
-  <div class="absolute inset-0"></div>
-  <div
-    class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between',
-      {
-        'max-w-7xl': !isFullWidth,
-      },
-    ]}
+<header class="overflow-hidden fixed z-10">
+  <nav
+    id="menu-nav"
+    class="w-screen lg:w-auto flex flex-col lg:flex-row-reverse lg:fixed lg:left-0 top-0 lg:h-screen lg:shadow-lg p-8 lg:py-0 lg:px-4 gap-4 overflow-hidden"
   >
-    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
-      <a class="flex items-center" href={getHomePermalink()}>
-        <Logo />
+    <!-- MENU BUTTON -->
+    <div class="col-menu lg:full flex lg:flex-col gap-8 justify-between items-center lg:py-8">
+      <a href="/">
+        <img
+          src="/svg/logo_horizontal.svg"
+          alt="logo_horizontal"
+          class="h-[12vw] portrait:md:h-[8vw] landscape:md:h-[7vw] lg:hidden"
+        />
+        <img src="/svg/loco_vertical.svg" alt="loco_vertical" class="hidden lg:block h-52" />
       </a>
-      <div class="flex items-center md:hidden">
-        <ToggleMenu />
+      <MenuButton />
+      <div id="social_box" class="hidden lg:flex flex-col gap-2">
+        <a href="https://wa.me/+524611119439?text=ConsultaWeb" target="_blank">
+          <i class="bi bi-whatsapp text-xl text-[#000]"></i>
+        </a>
+        <a href="https://www.facebook.com/stayloco/" target="_blank">
+          <i class="bi bi-facebook text-xl text-[#000]"></i>
+        </a>
+        <a href="https://www.instagram.com/loco4evercreativision/" target="_blank">
+          <i class="bi bi-instagram text-xl text-[#000]"></i>
+        </a>
+        <a href="https://mx.linkedin.com/company/loco4ever-creativision" target="_blank">
+          <i class="bi bi-linkedin text-xl text-[#000]"></i>
+        </a>
+        <a href="https://www.tiktok.com/@loco4everstudio" target="_blank">
+          <i class="bi bi-tiktok text-xl text-[#000]"></i>
+        </a>
+        <a href="https://youtube.com/@loco4evercreativision75" target="_blank">
+          <i class="bi bi-youtube text-xl text-[#000]"></i>
+        </a>
       </div>
     </div>
-    <nav
-      class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5"
-      aria-label="Main navigation"
-    >
-      <ul
-        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium"
-      >
-        {
-          links.map(({ text, href, links }) => (
-            <li class={links?.length ? 'dropdown' : ''}>
-              {links?.length ? (
-                <>
-                  <button class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
-                    {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
-                  </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                    {links.map(({ text: text2, href: href2 }) => (
-                      <li>
-                        <a
-                          class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
-                            { 'aw-link-active': href2 === currentPath },
-                          ]}
-                          href={href2}
-                        >
-                          {text2}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <a
-                  class:list={[
-                    'hover:text-link dark:hover:text-white px-4 py-3 flex items-centers',
-                    { 'aw-link-active': href === currentPath },
-                  ]}
-                  href={href}
-                >
-                  {text}
-                </a>
-              )}
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+
+    <!-- MENU OPTIONS -->
     <div
-      class:list={[
-        { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
-        'hidden md:self-center flex md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0',
-      ]}
+      id="content-menu"
+      class="content-menu flex h-fit lg:h-full flex-col justify-center items-end gap-4 lg:pl-32 lg:pr-8"
     >
-      <div class="items-center flex justify-between w-full md:w-auto">
-        <div class="flex">
-          {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
-          {
-            showRssFeed && (
-              <a
-                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
-              >
-                <Icon name="tabler:rss" class="w-5 h-5" />
-              </a>
-            )
-          }
-        </div>
-        {
-          actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
-              {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
-              ))}
-            </span>
-          ) : (
-            ''
-          )
-        }
+      <div>
+        <a href="/"
+          >Inicio <img
+            class="h-4 self-center flecha-menu opacity-zero active"
+            src="/svg/arrow_up_black.svg"
+            alt="flecha"
+          /></a>
+      </div>
+      <div>
+        <a href="/projects"
+          >Proyectos <img
+            class="h-4 self-center flecha-menu opacity-zero"
+            src="/svg/arrow_up_black.svg"
+            alt="flecha"
+          /></a
+        >
+      </div>
+      <div>
+        <a href="/services"
+          >Soluciones <img
+            class="h-4 self-center flecha-menu opacity-zero"
+            src="/svg/arrow_up_black.svg"
+            alt="flecha"
+          /></a
+        >
+      </div>
+      <div>
+        <a href="/about"
+          >Nosotros <img
+            class="h-4 self-center flecha-menu opacity-zero"
+            src="/svg/arrow_up_black.svg"
+            alt="flecha"
+          /></a
+        >
+      </div>
+      <div>
+        <a href="/contact"
+          >Contacto <img
+            class="h-4 self-center flecha-menu opacity-zero"
+            src="/svg/arrow_up_black.svg"
+            alt="flecha"
+          /></a
+        >
+      </div>
+      <div>
+        <a href="/blog_entries/todo/1"
+          >Noticias <img
+            class="h-4 self-center flecha-menu opacity-zero"
+            src="/svg/arrow_up_black.svg"
+            alt="flecha"
+          /></a
+        >
       </div>
     </div>
-  </div>
+  </nav>
 </header>
+
+<style>
+  #menu-nav {
+    overflow: hidden;
+  }
+
+  .content-menu {
+    left: -250px;
+    position: absolute;
+    transition: right 0.3s linear;
+  }
+
+  .content-menu a {
+    color: #000;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .open {
+    left: 0;
+    position: relative;
+    transition: left 0.3s linear;
+  }
+
+  .opacity-zero {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  a:hover .opacity-zero {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .content-menu {
+      top: -100px;
+    }
+
+    .content-menu,
+    .open {
+      transition: top 0.2s linear;
+    }
+
+    .open {
+      top: 0;
+    }
+  }
+
+  .cols-footer:where(.astro-MTXGG6PP) {
+    grid-template-columns: auto auto 1fr 1fr 3fr;
+  }
+
+  .logo-footer:where(.astro-MTXGG6PP) {
+    grid-row: 1 / span 2;
+  }
+
+  .vertical:where(.astro-MTXGG6PP) {
+    writing-mode: vertical-rl;
+  }
+
+  .vertical:where(.astro-MTXGG6PP),
+  .vertical:where(.astro-MTXGG6PP) i:where(.astro-MTXGG6PP) {
+    transform: rotate(-180deg);
+  }
+
+  .bottom-footer:where(.astro-MTXGG6PP) {
+    align-self: flex-end;
+    border-top: 1px solid #000;
+    display: flex;
+    grid-column: 2 / span 4;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .cols-footer:where(.astro-MTXGG6PP) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .logo-footer:where(.astro-MTXGG6PP) {
+      grid-row: auto;
+    }
+
+    .bottom-footer:where(.astro-MTXGG6PP),
+    .movil-form:where(.astro-MTXGG6PP) {
+      grid-column: 1 / span 2;
+    }
+
+    .bottom-footer:where(.astro-MTXGG6PP) {
+      flex-direction: column;
+    }
+  }
+</style>

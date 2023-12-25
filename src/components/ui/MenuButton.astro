@@ -71,25 +71,19 @@
 </style>
 
 <script>
-  const E = document.getElementById('btn_menu'),
-    v = document.getElementById('content-menu'),
-    B = document.getElementById('menu-nav'),
-    w = [...document.getElementsByTagName('i')];
-  E.addEventListener('click', () => {
-    v.classList.toggle('open'),
-      B.classList.toggle('bg-[#fff]'),
-      w.map((e) => {
-        e.classList.toggle('text-[#000]');
-      });
-  });
-
-  const x = document.getElementById('btn_menu'),
-    k = document.getElementById('btn-menu'),
-    S = [...document.getElementsByTagName('i')];
-  x.addEventListener('click', () => {
-    k.classList.toggle('icon-transform-x'),
-      S.map((e) => {
-        e.classList.toggle('color_open');
-      });
+  const btnMenu = document.getElementById('btn_menu');
+  const strokes = [...document.getElementsByTagName('i')];
+  const slides = [...document.getElementsByClassName("swiper-slide")];
+  btnMenu.addEventListener('click', () => {
+    document.getElementById('btn-menu').classList.toggle('icon-transform-x');
+    document.getElementById('content-menu').classList.toggle('open');
+    document.getElementById('menu-nav').classList.toggle('bg-[#fff]');
+    strokes.map((e) => {
+      e.classList.toggle('text-[#000]');
+      e.classList.toggle('color_open');
+    });
+    slides.map(e=>{
+        e.classList.toggle("pl-open-menu")
+    });
   });
 </script>

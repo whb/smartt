@@ -54,12 +54,13 @@ const { slides } = Astro.props;
     <div class="w-full absolute bottom-0 z-10 flex lg:hidden items-center justify-between p-8 pb-16">
       <div class="flex flex-col gap-2">
         <div class="flex gap-2">
-          <div class="slider-indicator h-2 rounded-lg transition-all w-16 bg-loco-purple">
-          </div>
-          <div class="slider-indicator h-2 rounded-lg transition-all w-4 bg-[#3C3C3C]">
-          </div>
-          <div class="slider-indicator h-2 rounded-lg transition-all w-4 bg-[#3C3C3C]">
-          </div>
+          {
+            slides.map((item, index) => (
+              index == 0 
+                ? <div class="slider-indicator h-2 rounded-lg transition-all w-16 bg-loco-purple"></div>
+                : <div class="slider-indicator h-2 rounded-lg transition-all w-4 bg-[#3C3C3C]"></div>
+            ))
+          }
         </div>
         <span class="font-bold font-futura">© XIANGLONG ZHIYUN 2023</span>
       </div>
@@ -80,22 +81,6 @@ const { slides } = Astro.props;
 
 <style is:global>
   @import url('https://fonts.cdnfonts.com/css/futura-condensed-pt');
-
-  .swiper-pagination-bullet {
-    width: 1rem;
-    background-color: #3c3c3c;
-    height: 0.5rem;
-    border-radius: 0.5rem;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-  }
-
-  .swiper-pagination-bullet-active {
-    width: 4rem;
-    --tw-bg-opacity: 1;
-    background-color: rgb(32 38 178 / var(--tw-bg-opacity));
-  }
 
   .left-circle-fill,
   .right-circle-fill {
@@ -239,7 +224,7 @@ swiper.on("activeIndexChange", ()=>{
   setNavigator()
 });
 
-// direction：vertical时，滚动效果
+// direction=vertical时，滚动效果
 swiper.on("progress", ()=>{
     swiper.progress == 1 && !swiper.isHorizontal() && swiper.disable()
 });

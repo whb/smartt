@@ -3,67 +3,34 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
+      text: '首页',
+      href: getPermalink('/'),
     },
     {
-      text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
+      text: '服务',
+      href: getPermalink('/services'),
     },
     {
-      text: 'Widgets',
-      href: '#',
+      text: '企业资讯',
+      href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
     },
+    {
+      text: '行业新闻',
+      href: getPermalink('markdown-elements-demo-post', 'post'),
+    },
+    {
+      text: '价格',
+      href: getPermalink('/pricing'),
+    },
+    {
+      text: '关于我们',
+      href: getPermalink('/about'),
+    },
+    {
+      text: '联系我们',
+      href: getPermalink('/contact'),
+    },
+
   ],
   actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };

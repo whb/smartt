@@ -93,60 +93,24 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       id="content-menu"
       class="content-menu flex h-fit lg:h-full flex-col justify-center items-end gap-4 lg:pl-24 lg:pr-8"
     >
-      <div>
-        <a href="/"
-          >Inicio <img
-            class="h-4 self-center flecha-menu opacity-zero active"
-            src="/svg/arrow_up_black.svg"
-            alt="flecha"
-          /></a>
-      </div>
-      <div>
-        <a href="/projects"
-          >Proyectos <img
-            class="h-4 self-center flecha-menu opacity-zero"
-            src="/svg/arrow_up_black.svg"
-            alt="flecha"
-          /></a
-        >
-      </div>
-      <div>
-        <a href="/services"
-          >Soluciones <img
-            class="h-4 self-center flecha-menu opacity-zero"
-            src="/svg/arrow_up_black.svg"
-            alt="flecha"
-          /></a
-        >
-      </div>
-      <div>
-        <a href="/about"
-          >Nosotros <img
-            class="h-4 self-center flecha-menu opacity-zero"
-            src="/svg/arrow_up_black.svg"
-            alt="flecha"
-          /></a
-        >
-      </div>
-      <div>
-        <a href="/contact"
-          >Contacto <img
-            class="h-4 self-center flecha-menu opacity-zero"
-            src="/svg/arrow_up_black.svg"
-            alt="flecha"
-          /></a
-        >
-      </div>
-      <div>
-        <a href="/blog_entries/todo/1"
-          >Noticias <img
-            class="h-4 self-center flecha-menu opacity-zero"
-            src="/svg/arrow_up_black.svg"
-            alt="flecha"
-          /></a
-        >
-      </div>
+      {
+          links.map(({ text, href }) => (
+            <div>
+              <a href={href}>{text} 
+                <img
+                  class:list={[
+                    'h-4 self-center flecha-menu opacity-zero',
+                    { 'active': href === currentPath },
+                  ]}
+                  src="/svg/arrow_up_black.svg"
+                  alt="flecha"
+                />
+              </a>
+            </div>
+          ))
+        }
     </div>
+
   </nav>
 </header>
 

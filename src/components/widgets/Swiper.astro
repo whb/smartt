@@ -49,6 +49,8 @@ const { slides } = Astro.props;
       }
     </div>
 
+    <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-vertical" />
+
     <div class="w-full absolute bottom-0 z-10 flex lg:hidden items-center justify-between p-8 pb-16">
       <div class="flex flex-col gap-2">
         <div class="swiper-pagination flex gap-2"></div>
@@ -197,19 +199,22 @@ const { slides } = Astro.props;
           swiper.mousewheel.disable();
         } else {
           swiper.mousewheel.enable();
+          console.log("mousewheel enable")
         }
-      },
-      slideChange: function() {
-        setTimeout(function () {
-          swiper.params.mousewheel.releaseOnEdges = false;
-        }, 500);
       },
       reachEnd: function() {
         setTimeout(function () {
-          swiper.params.mousewheel.releaseOnEdges = true;
+          swiper.mousewheel.disable();
         }, 750);
       },
     },
+  });
+
+  window.addEventListener("scroll", (event) => {
+    const scrollPosition = window.scrollY;
+    if(scrollPosition < 1) {
+      swiper.mousewheel.enable();
+    }
   });
 </script>
 

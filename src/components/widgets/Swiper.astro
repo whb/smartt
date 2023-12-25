@@ -53,16 +53,23 @@ const { slides } = Astro.props;
 
     <div class="w-full absolute bottom-0 z-10 flex lg:hidden items-center justify-between p-8 pb-16">
       <div class="flex flex-col gap-2">
-        <div class="swiper-pagination2 flex gap-2"></div>
+        <div class="flex gap-2">
+          <div class="slider-indicator h-2 rounded-lg transition-all w-16 bg-loco-purple">
+          </div>
+          <div class="slider-indicator h-2 rounded-lg transition-all w-4 bg-[#3C3C3C]">
+          </div>
+          <div class="slider-indicator h-2 rounded-lg transition-all w-4 bg-[#3C3C3C]">
+          </div>
+        </div>
         <span class="font-bold font-futura">© XIANGLONG ZHIYUN 2023</span>
       </div>
 
       <div class="flex items-center gap-2">
-        <div class="swiper-button-prev text-4xl text-loco-red transition-all">
+        <div id="prev_btn" class="swiper-button-disabled text-4xl text-loco-red transition-all">
           <Icon name="bi:arrow-left-circle" class="left-circle" />
           <Icon name="bi:arrow-left-circle-fill" class="left-circle-fill" />
         </div>
-        <div class="swiper-button-next text-4xl text-loco-red transition-all">
+        <div id="next_btn" class="text-4xl text-loco-red transition-all">
           <Icon name="bi:arrow-right-circle" class="right-circle" />
           <Icon name="bi:arrow-right-circle-fill" class="right-circle-fill" />
         </div>
@@ -149,6 +156,11 @@ const { slides } = Astro.props;
     }
   }
 
+  .bg-loco-purple {
+    --tw-bg-opacity: 1;
+    background-color: rgb(32 38 178/var(--tw-bg-opacity));
+  }
+
   .text-loco-red {
     --tw-text-opacity: 1;
     color: rgb(246 76 113 / var(--tw-text-opacity));
@@ -175,29 +187,13 @@ const { slides } = Astro.props;
   import 'swiper/css';
   import 'swiper/css/pagination';
   
-
-  const getDirection = () => {
-    const TAILWIND_LG = 1024;
-    return window.innerWidth > TAILWIND_LG ? 'vertical' : 'horizontal';
-  }
-
-  const changeSwiperStyle = () => {
-    swiper.changeDirection(getDirection());
-    if('horizontal' == getDirection()) {
-      swiper.mousewheel.disable();
-    } else {
-      swiper.mousewheel.enable();
-    }
-  }
-
-  const swiper = new Swiper('.swiper', {
+  const prev = document.getElementById("prev_btn");
+  const next = document.getElementById("next_btn");
+  const swiper = new Swiper(".swiper",{
     modules: [Navigation, Pagination, Parallax, Mousewheel],
     direction: "horizontal",
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    slidesPerView: 1,
+    spaceBetween: 0,
     mousewheel: {
       forceToAxis: true,
       sensitivity: .5
@@ -206,33 +202,50 @@ const { slides } = Astro.props;
     parallax: true,
     breakpoints: {
       1024: {
-          direction: "vertical",
-          pagination: {
-              el: ".swiper-pagination",
-              type: "progressbar"
-          }
+        direction: "vertical",
+        pagination: {
+          el: ".swiper-pagination",
+          type: "progressbar"
+        }
       }
-    },
-    
-    //direction: getDirection(),
-    on: {
-      //resize: changeSwiperStyle,
-      reachEnd: function() {
-        setTimeout(function () {
-          swiper.mousewheel.disable();
-        }, 750);
-      },
-    },
-  });
-
-  
-
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY;
-    if(scrollPosition < 1) {
-      swiper.mousewheel.enable();
     }
-  });
+});
+
+// 编程实现mobile屏幕的pagination and navigator
+prev.addEventListener("click", ()=>{
+  swiper.slidePrev()
+}
+);
+next.addEventListener("click", ()=>{
+  swiper.slideNext()
+}
+);
+const setNavigator = ()=>{
+  prev.classList.toggle("swiper-button-disabled", swiper.isBeginning);
+  next.classList.toggle("swiper-button-disabled", swiper.isEnd);
+};
+
+const pageBullets = [...document.querySelectorAll(".slider-indicator")];
+const setPagination = activeIndex=>{
+  pageBullets.map((item,i)=>{
+      i == activeIndex 
+        ? (item.classList.remove("w-4", "bg-[#3C3C3C]"), item.classList.add("w-16", "bg-loco-purple")) 
+        : (item.classList.remove("w-16", "bg-loco-purple"), item.classList.add("w-4", "bg-[#3C3C3C]"))
+  })
+};
+
+swiper.on("activeIndexChange", ()=>{
+  setPagination(swiper.activeIndex);
+  setNavigator()
+});
+
+// direction：vertical时，滚动效果
+swiper.on("progress", ()=>{
+    swiper.progress == 1 && !swiper.isHorizontal() && swiper.disable()
+});
+document.addEventListener("scroll", ()=>{
+    swiper.progress == 1 && window.scrollY == 0 && swiper.enable()
+});
 </script>
 
 <script define:vars={{ slides }}>

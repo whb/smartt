@@ -199,7 +199,6 @@ const { slides } = Astro.props;
           swiper.mousewheel.disable();
         } else {
           swiper.mousewheel.enable();
-          console.log("mousewheel enable")
         }
       },
       reachEnd: function() {
@@ -210,7 +209,7 @@ const { slides } = Astro.props;
     },
   });
 
-  window.addEventListener("scroll", (event) => {
+  window.addEventListener("scroll", () => {
     const scrollPosition = window.scrollY;
     if(scrollPosition < 1) {
       swiper.mousewheel.enable();

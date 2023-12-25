@@ -49,7 +49,7 @@ const { slides } = Astro.props;
       }
     </div>
 
-    <div class="w-full absolute bottom-0 z-10 flex items-center justify-between p-8 pb-16">
+    <div class="w-full absolute bottom-0 z-10 flex lg:hidden items-center justify-between p-8 pb-16">
       <div class="flex flex-col gap-2">
         <div class="swiper-pagination flex gap-2"></div>
         <span class="font-bold font-futura">© XIANGLONG ZHIYUN 2023</span>
@@ -170,10 +170,15 @@ const { slides } = Astro.props;
 <script>
   import { Swiper } from 'swiper';
   import 'swiper/css';
-  import { Navigation, Pagination, Parallax } from 'swiper/modules';
+  import { Navigation, Pagination, Parallax, Mousewheel} from 'swiper/modules';
 
-  new Swiper('.swiper', {
-    modules: [Navigation, Pagination, Parallax],
+  const getDirection = () => {
+    const TAILWIND_LG = 1024;
+    return window.innerWidth > TAILWIND_LG ? 'vertical' : 'horizontal';
+  }
+
+  const swiper = new Swiper('.swiper', {
+    modules: [Navigation, Pagination, Parallax, Mousewheel],
     pagination: {
       el: '.swiper-pagination',
     },
@@ -183,6 +188,28 @@ const { slides } = Astro.props;
       prevEl: '.swiper-button-prev',
     },
     parallax: true,
+    
+    direction: getDirection(),
+    on: {
+      resize: function () {
+        swiper.changeDirection(getDirection());
+        if('horizontal' == getDirection()) {
+          swiper.mousewheel.disable();
+        } else {
+          swiper.mousewheel.enable();
+        }
+      },
+      slideChange: function() {
+        setTimeout(function () {
+          swiper.params.mousewheel.releaseOnEdges = false;
+        }, 500);
+      },
+      reachEnd: function() {
+        setTimeout(function () {
+          swiper.params.mousewheel.releaseOnEdges = true;
+        }, 750);
+      },
+    },
   });
 </script>
 

@@ -12,6 +12,12 @@ const metadata = {
 };
 
 import { getImage } from "astro:assets"
+
+import tomas16x9 from "../assets/images/slider/tomas-16x9.jpg"
+import tomas9x16 from "../assets/images/slider/tomas-9x16.jpg"
+const tomas16x9Image = await getImage({ src: tomas16x9 })
+const tomas9x16Image = await getImage({ src: tomas9x16 })
+
 import ship16x9 from "../assets/images/slider/ship-16x9.jpg"
 import ship9x16 from "../assets/images/slider/ship-9x16.jpg"
 const ship16x9Image = await getImage({ src: ship16x9 })
@@ -30,9 +36,22 @@ const wayLane9x16Image = await getImage({ src: wayLane9x16 })
 const slides = [
   {
     kicker: '效率',
+    background: `url("${tomas16x9Image.src}")`,
+    background_movil: `url("${tomas9x16Image.src}")`,
+    title: '干线运输<br><br>',
+    highlight: '优化运力',
+    text_color: '#fff',
+    url_project: '',
+    btn_href: '/portafolio/88673',
+    btn_bg_color: '#F64C71',
+    btn_text_color: 'white',
+    invert_arrow_color: false,
+  },
+  {
+    kicker: '安全',
     background: `url("${ship16x9Image.src}")`,
     background_movil: `url("${ship9x16Image.src}")`,
-    title: '城配干线大宗多维度运输<br><br>',
+    title: '超限件运输<br><br>',
     highlight: '优化运力',
     text_color: '#fff',
     url_project: '',

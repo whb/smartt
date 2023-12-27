@@ -2,7 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Swiper from '~/components/widgets/Swiper.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Videos from '~/components/widgets/Videos.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
@@ -93,9 +93,9 @@ const slides = [
   <!-- Hero Slides ******************* -->
   <Swiper slides={slides} />
 
-  <!-- Hero Widget ******************* -->
+  <!-- Video Widget ******************* -->
 
-  <Hero
+  <Videos
     actions={[
       {
         variant: 'primary',
@@ -122,7 +122,7 @@ const slides = [
        Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages
       & Blogs.
     </Fragment>
-  </Hero>
+  </Videos>
 
   <!-- Content Widget **************** -->
 

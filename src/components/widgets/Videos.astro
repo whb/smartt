@@ -1,0 +1,90 @@
+---
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+import type { CallToAction } from '~/types';
+
+export interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  content?: string;
+  actions?: string | CallToAction[];
+  image?: string | any; // TODO: find HTMLElementProps
+}
+
+const {
+  id,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  content = await Astro.slots.render('content'),
+  actions = await Astro.slots.render('actions'),
+  image = await Astro.slots.render('image'),
+} = Astro.props;
+---
+
+<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+    <div class="py-12 md:py-20">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide video-slide">
+            <video src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/05/015253971354_.mp4" muted></video>
+          </div>
+          <div class="swiper-slide video-slide">
+            <video src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/02/013360964777_.mp4" preload="none" muted
+            ></video>
+          </div>
+          <div class="swiper-slide video-slide">
+            <video src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/05/015428166799_.mp4" preload="none" muted
+            ></video>
+          </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style></style>
+<script>
+  import { Swiper } from 'swiper';
+  import { Navigation, Pagination, Autoplay, Mousewheel } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import 'swiper/css/navigation';
+  const videoSwiper = new Swiper('.swiper-container', {
+    modules: [Navigation, Pagination, Autoplay, Mousewheel],
+    direction: 'horizontal',
+    loop: false,
+    spaceBetween: 30,
+    centeredSlides: true,
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+  });
+
+  videoSwiper.on('transitionStart', () => {
+    const videos = document.querySelectorAll('video');
+    Array.prototype.forEach.call(videos, function (video) {
+      video.pause();
+    });
+  });
+
+  videoSwiper.on('transitionEnd', () => {
+    const activeIndex = videoSwiper.activeIndex;
+    const activeSlide = document.getElementsByClassName('video-slide')[activeIndex];
+    const activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
+    activeSlideVideo.play();
+  });
+</script>

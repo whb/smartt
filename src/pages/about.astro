@@ -7,7 +7,7 @@ import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'About us',
+  title: '关于我们',
 };
 ---
 
@@ -15,214 +15,134 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="About us"
+    tagline="关于我们"
     image={{
       src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       alt: 'Caos Image',
     }}
   >
     <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span>
+      <br />祥龙智运<br />
+      <span class="text-accent dark:text-white highlight"></span><br />
     </Fragment>
 
     <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
+      是祥龙物流集团旗下专注于以科技为企业客户提供服务的全资子公司。
     </Fragment>
   </Hero>
 
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
   <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
+    title="服务让世界高效"
     columns={3}
     isBeforeContent={true}
     items={[
       {
-        title: 'Educational',
+        title: '产业升级',
         description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
+          '祥龙智运秉承“以科技推动产业升级，用服务让世界高效”的使命，致力于为城市、企业等各类客户提供全产业链的产品和服务。',
         icon: 'tabler:template',
       },
       {
-        title: 'Interior Design',
+        title: '数字化转型',
         description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
+          '祥龙智运对内助力祥龙物流集团加速数字化转型，实现新增长；对外力争成为更懂客户的解决方案提供商。',
         icon: 'tabler:template',
       },
       {
-        title: 'Photography',
+        title: '解决方案',
         description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
+          '祥龙智运基于人工智能、云计算、大数据等科技，加之祥龙物流多年在在物流仓储行业的积累，祥龙智运为各行各业提供高效运输解决方案，助力企业高质量发展。',
         icon: 'tabler:template',
       },
+    ]}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="祥龙物流"
+    stats={[
+      { title: '行业经验', amount: '20年' },
+      { title: '物流园区', amount: '3765亩' },
+      { title: '运输车辆', amount: '120部' },
     ]}
   />
 
   <!-- Features3 Widget ************** -->
 
   <Features3
+    title="整合资源"
+    subtitle="祥龙物流自2003年成立以来一直深耕于仓储物流行业，在行业中行业中摸爬滚打，积累了丰富的经验。基于以上，祥龙智运应运而生。"
     columns={3}
-    isAfterContent={true}
+    isBeforeContent={true}
     items={[
       {
-        title: 'E-commerce',
+        title: '先进技术',
         description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
+          '祥龙智运整合上级集团各类资源，利用互联网先进技术，搭建网络货运平台。',
         icon: 'tabler:template',
       },
       {
-        title: 'Blog',
+        title: '平台服务',
         description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
+          '以网络货运平台为基础，依托祥龙物流集团在物流领域的深厚底蕴、物流行业的专业经验，构建物流科技核心生产力，为客户提供综合的物流行业科技产品与网络货运平台服务。',
         icon: 'tabler:template',
       },
       {
-        title: 'Business',
+        title: '安全稳定',
         description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
+          '贯彻落实安全、稳定的原则，打造让国家放心，企业放心，司机放心的平台。',
         icon: 'tabler:template',
       },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
   />
 
-  <!-- Steps2 Widget ****************** -->
+    <!-- Steps2 Widget ****************** -->
 
   <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
+    title="祥龙智运发展规划"
+    subtitle="在数字化浪潮中始终保持创新发展的态势，成为京津冀地区颇具影响力的国有网络货运平台。"
     items={[
       {
-        title: 'Customer-centric approach',
+        title: '1.0阶段',
         description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+          '构建祥龙内部生态，完善上下游，实现降本增效。',
       },
       {
-        title: 'Constant Improvement',
+        title: '2.0阶段',
         description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
+          '以1.0经验为基础，融入区域市场，建立京津冀地区数字货运生态圈。',
       },
       {
-        title: 'Ethical Practices',
+        title: '3.0阶段',
         description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+          '不断改革创新，持续满足市场客户需求，努力成为创新性科技企业。',
       },
     ]}
   />
 
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
+    title="企业愿景"
+    tagline=""
+    columns={3}
     items={[
       {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
+        title: '成为卓越、科技、规范',
+        description: '',
       },
       {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
+        title: '安全的数字化货运平台',
+        description: '',
       },
       {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
+        title: '构建京津冀地区数字货运生态圈',
+        description: '',
       },
     ]}
   />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
+  
 </Layout>

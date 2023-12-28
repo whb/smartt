@@ -75,7 +75,7 @@ const {
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
-                <div class="phone m-auto">
+                <div class="phone relative m-auto w-[320px] h-[470px] md:w-[400px] md:h-[600px]">
                   <div class="screen">
                     <video
                       src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/05/015253971354_.mp4"
@@ -97,12 +97,6 @@ const {
 </WidgetWrapper>
 
 <style>
-  .phone {
-    position: relative;
-    width: 400px;
-    height: 600px;
-  }
-
   .phone-mask {
     position: absolute;
     top: 0;
@@ -110,7 +104,7 @@ const {
     bottom: 0;
     left: 0;
     background: url('https://staticweb.keepcdn.com/staticShow/images/newhome/phone-848d0effca.png') no-repeat
-      center/cover;
+      center top /100%;
   }
 
   .screen {

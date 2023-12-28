@@ -75,19 +75,18 @@ const {
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
-
-
                 <div class="phone m-auto">
                   <div class="screen">
                     <video
                       src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/05/015253971354_.mp4"
                       muted
+                      loop 
                       poster="https://static1.keepcdn.com/2021/05/24/1621830017329_540x816.jpg"
-                      class="video"></video>
+                      class="video"
+                    />
                   </div>
-                  <div class="phone-mask"></div>
+                  <div class="phone-mask" />
                 </div>
-
               )}
             </div>
           )
@@ -100,7 +99,6 @@ const {
 <style>
   .phone {
     position: relative;
-    border: 2px dotted blue;
     width: 400px;
     height: 600px;
   }
@@ -125,3 +123,37 @@ const {
     border-radius: 8px 8px 0 0;
   }
 </style>
+
+<script>
+  function playPauseVideo() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach((video) => {
+      // We can only control playback without insteraction if video is mute
+      video.muted = true;
+      // Play is a promise so we need to check we have it
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.intersectionRatio !== 1 && !video.paused) {
+                  console.log("pause")
+                  video.pause();
+                } else if (video.paused) {
+                  console.log("play")
+                  video.play();
+                }
+              });
+            },
+            { threshold: 0.2 }
+          );
+          observer.observe(video);
+        });
+      }
+    });
+  }
+
+  // And you would kick this off where appropriate with:
+  playPauseVideo();
+</script>

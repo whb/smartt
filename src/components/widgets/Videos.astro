@@ -3,6 +3,11 @@ import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
 import type { CallToAction } from '~/types';
 
+import { getImage } from 'astro:assets';
+
+import phone from '../../assets/images/phone.png';
+const phoneImage = await getImage({ src: phone });
+
 export interface Props {
   id?: string;
   title?: string;
@@ -29,29 +34,68 @@ const {
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
     <div class="py-12 md:py-20">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide video-slide">
-            <video src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/05/015253971354_.mp4" muted></video>
-          </div>
-          <div class="swiper-slide video-slide">
-            <video src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/02/013360964777_.mp4" preload="none" muted
-            ></video>
-          </div>
-          <div class="swiper-slide video-slide">
-            <video src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/05/015428166799_.mp4" preload="none" muted
-            ></video>
-          </div>
+
+
+      <div class="phone">
+        <div class="screen">
+          <video
+            src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/02/015253971354_.mp4"
+            muted
+            poster="https://static1.keepcdn.com/2021/05/24/1621830017329_540x816.jpg"
+            webkit-playsinline
+            playsinline
+            x5-video-player-type="h5"
+            class="video screen_1"></video>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="phone-mask"></div>
       </div>
+
     </div>
   </div>
 </section>
 
-<style></style>
+<style>
+  .video-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 100px 0 0 0;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .video-slide {
+    border: 0px blue dotted;
+  }
+
+  .phone {
+    height: 600px;
+    width: 100px;
+  }
+
+  .phone .phone-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('https://staticweb.keepcdn.com/staticShow/images/newhome/phone-848d0effca.png') no-repeat
+      center/cover;
+  }
+
+  .phone .screen {
+    position: absolute;
+    top: 18px;
+    left: 21px;
+    right: 21px;
+    bottom: 0;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+  }
+</style>
 <script>
+  /*
   import { Swiper } from 'swiper';
   import { Navigation, Pagination, Autoplay, Mousewheel } from 'swiper/modules';
   import 'swiper/css';
@@ -69,7 +113,7 @@ const {
       prevEl: '.swiper-button-prev',
     },
     autoplay: {
-      delay: 3500,
+      delay: 18500,
       disableOnInteraction: false,
     },
   });
@@ -87,4 +131,5 @@ const {
     const activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
     activeSlideVideo.play();
   });
+  */
 </script>

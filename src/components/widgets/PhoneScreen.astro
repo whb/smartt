@@ -78,10 +78,8 @@ const {
                 <div class="phone relative m-auto w-[320px] h-[470px] md:w-[400px] md:h-[600px]">
                   <div class="screen">
                     <video
-                      src="https://v1.keepcdn.com/infra-cms/2021/05/20/17/05/015253971354_.mp4"
+                      src="https://www.xlzy56.com/assets/shipin.7eaf7560.mp4"
                       muted
-                      loop 
-                      poster="https://static1.keepcdn.com/2021/05/24/1621830017329_540x816.jpg"
                       class="video"
                     />
                   </div>
@@ -131,16 +129,18 @@ const {
           const observer = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
-                if (entry.intersectionRatio !== 1 && !video.paused) {
+                // const k = entry.intersectionRect.height / viewportHeight
+                console.log(entry.intersectionRatio)
+                if (entry.intersectionRatio == 0 && !video.paused) {
                   console.log("pause")
                   video.pause();
-                } else if (video.paused) {
+                } else {
                   console.log("play")
                   video.play();
                 }
               });
             },
-            { threshold: 0.2 }
+            { threshold: 0 }
           );
           observer.observe(video);
         });

@@ -129,8 +129,6 @@ const {
           const observer = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
-                // const k = entry.intersectionRect.height / viewportHeight
-                console.log(entry.intersectionRatio)
                 if (entry.intersectionRatio == 0 && !video.paused) {
                   console.log("pause")
                   video.pause();

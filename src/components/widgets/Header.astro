@@ -50,7 +50,7 @@ const {
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
-<header class="overflow-hidden fixed z-10">
+<header class="overflow-hidden fixed z-10 transition-[opacity] ease-in-out">
   <nav
     id="menu-nav"
     class="w-screen lg:w-auto flex flex-col lg:flex-row-reverse lg:fixed lg:left-0 top-0 lg:h-screen lg:shadow-lg p-8 lg:py-0 lg:px-4 gap-4 overflow-hidden"

@@ -3,8 +3,8 @@ import Layout from '~/layouts/HomeLayout.astro';
 
 import Swiper from '~/components/widgets/Swiper.astro';
 import PhoneScreen from '~/components/widgets/PhoneScreen.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FeaturesApp from '~/components/widgets/FeaturesApp.astro';
 
 const metadata = {
   title: '祥龙智运',
@@ -90,11 +90,29 @@ const slides = [
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Slides ******************* -->
   <Swiper slides={slides} />
 
-  <!-- PhoneScreen Widget ******************* -->
+  <FeaturesApp
+    id="features"
+    title="祥龙智运 App"
+    subtitle="在 祥龙智运 App 完成您的运输工作。"
+    items={[
+      {
+        title: '微信小程序',
+        icon: '/svg/frontend/mini.svg',
+      },
+      {
+        title: '安卓App',
+        icon: '/svg/frontend/robot.svg',
+      },
+      {
+        title: '网页版',
+        icon: '/svg/frontend/ie.svg',
+      },
+    ]}
+  />
 
+  <!-- PhoneScreen Widget ******************* -->
    <PhoneScreen
     title="平台功能介绍"
     items={[

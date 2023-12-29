@@ -130,10 +130,8 @@ const {
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.intersectionRatio == 0 && !video.paused) {
-                  console.log("pause")
                   video.pause();
                 } else {
-                  console.log("play")
                   video.play();
                 }
               });

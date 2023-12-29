@@ -67,3 +67,19 @@ const metadata = {
 
   <BlogLatestPosts title="新闻动态" information={`最热新闻`} />
 </Layout>
+
+<script>
+  window.addEventListener('load', () => {
+    document.getElementById('menu-header')?.classList.remove('bg-white');
+  });
+  
+  window.addEventListener('scroll', () => {
+    if (document.getElementById('main_swiper').getBoundingClientRect().bottom < 0) {
+      !document.getElementById('menu-header')?.classList.contains('bg-white') &&
+        document.getElementById('menu-header')?.classList.add('bg-white');
+    } else {
+      document.getElementById('menu-header')?.classList.contains('bg-white') &&
+        document.getElementById('menu-header')?.classList.remove('bg-white');
+    }
+  });
+</script>

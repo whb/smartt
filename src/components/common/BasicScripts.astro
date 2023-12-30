@@ -147,4 +147,14 @@ import { UI } from '~/utils/config';
     onLoad();
     onPageShow();
   });
+
+  window.addEventListener('scroll', function handleScroll() {
+  if (window.scrollY > this.lastScrollTop || 0) {
+    document.getElementById('menu-header')?.classList.add('opacity-zero');
+  } else if (window.scrollY < this.lastScrollTop) {
+    document.getElementById('menu-header')?.classList.remove('opacity-zero');
+  }
+
+  this.lastScrollTop = window.scrollY;
+});
 </script>

@@ -50,7 +50,7 @@ const {
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
-<header id="menu-header" class="overflow-hidden fixed z-10 md:visible sm:invisible">
+<header id="menu-header" class="overflow-hidden fixed z-10">
   <nav
     id="menu-nav"
     class="w-screen lg:w-auto flex flex-col lg:flex-row-reverse lg:fixed lg:left-0 top-0 lg:h-screen lg:shadow-lg p-4 lg:py-0 lg:px-4 gap-4 overflow-hidden"
@@ -163,6 +163,11 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
     .open {
       top: 0;
+    }
+
+    .opacity-zero-only-mobile {
+      opacity: 0;
+      transition: opacity 0.5s;
     }
   }
 

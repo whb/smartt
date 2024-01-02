@@ -150,9 +150,10 @@ import { UI } from '~/utils/config';
 
   window.addEventListener('scroll', function handleScroll() {
   if (window.scrollY > this.lastScrollTop || 0) {
-    document.getElementById('menu-header')?.classList.add('opacity-zero');
+    document.getElementById('menu-header')?.classList.add('opacity-zero-only-mobile');
+    
   } else if (window.scrollY < this.lastScrollTop) {
-    document.getElementById('menu-header')?.classList.remove('opacity-zero');
+    document.getElementById('menu-header')?.classList.remove('opacity-zero-only-mobile');
   }
 
   this.lastScrollTop = window.scrollY;

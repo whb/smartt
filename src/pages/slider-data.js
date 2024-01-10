@@ -1,30 +1,30 @@
 import { getImage } from "astro:assets"
 
-import tomas16x9 from "../assets/images/slider/tomas-16x9.jpg"
-import tomas9x16 from "../assets/images/slider/tomas-9x16.jpg"
-const tomas16x9Image = await getImage({ src: tomas16x9 })
-const tomas9x16Image = await getImage({ src: tomas9x16 })
+import networkTransport16x9 from "../assets/images/slider/1_network_transport_16x9.png"
+import networkTransport9x16 from "../assets/images/slider/1_network_transport_9x16.png"
+const networkTransport16x9Image = await getImage({ src: networkTransport16x9 })
+const networkTransport9x16Image = await getImage({ src: networkTransport9x16 })
 
-import ship16x9 from "../assets/images/slider/ship-16x9.jpg"
-import ship9x16 from "../assets/images/slider/ship-9x16.jpg"
-const ship16x9Image = await getImage({ src: ship16x9 })
-const ship9x16Image = await getImage({ src: ship9x16 })
+import valueAddService16x9 from "../assets/images/slider/2_value_added_service_16x9.png"
+import valueAddService9x16 from "../assets/images/slider/2_value_added_service_9x16.png"
+const valueAddService16x9Image = await getImage({ src: valueAddService16x9 })
+const valueAddService9x16Image = await getImage({ src: valueAddService9x16 })
 
-import bergmanis16x9 from "../assets/images/slider/bergmanis-16x9.jpg"
-import bergmanis9x16 from "../assets/images/slider/bergmanis-9x16.jpg"
-const bergmanis16x9Image = await getImage({ src: bergmanis16x9 })
-const bergmanis9x16Image = await getImage({ src: bergmanis9x16 })
+import carAftermarker16x9 from "../assets/images/slider/3_car_aftermarket_16x9.png"
+import carAftermarker9x16 from "../assets/images/slider/3_car_aftermarket_9x16.png"
+const carAftermarker16x9Image = await getImage({ src: carAftermarker16x9 })
+const carAftermarker9x16Image = await getImage({ src: carAftermarker9x16 })
 
-import wayLane16x9 from "../assets/images/slider/way-lane-16x9.jpg"
-import wayLane9x16 from "../assets/images/slider/way-lane-9x16.jpg"
-const wayLane16x9Image = await getImage({ src: wayLane16x9 })
-const wayLane9x16Image = await getImage({ src: wayLane9x16 })
+import bigData16x9 from "../assets/images/slider/4_big_data_16x9.png"
+import bigData9x16 from "../assets/images/slider/4_big_data_9x16.png"
+const bigData16x9Image = await getImage({ src: bigData16x9 })
+const bigData9x16Image = await getImage({ src: bigData9x16 })
 
 export const slides = [
   {
     kicker: '效率',
-    background: `url("${tomas16x9Image.src}")`,
-    background_movil: `url("${tomas9x16Image.src}")`,
+    background: `url("${networkTransport16x9Image.src}")`,
+    background_movil: `url("${networkTransport9x16Image.src}")`,
     title: '干线运输<br><br>',
     highlight: '优化运力',
     text_color: '#fff',
@@ -36,8 +36,8 @@ export const slides = [
   },
   {
     kicker: '安全',
-    background: `url("${ship16x9Image.src}")`,
-    background_movil: `url("${ship9x16Image.src}")`,
+    background: `url("${valueAddService16x9Image.src}")`,
+    background_movil: `url("${valueAddService9x16Image.src}")`,
     title: '超限件运输<br><br>',
     highlight: '优化运力',
     text_color: '#fff',
@@ -49,8 +49,8 @@ export const slides = [
   },
   {
     kicker: '智慧',
-    background: `url("${bergmanis16x9Image.src}")`,
-    background_movil: `url("${bergmanis9x16Image.src}")`,
+    background: `url("${carAftermarker16x9Image.src}")`,
+    background_movil: `url("${carAftermarker9x16Image.src}")`,
     title: 'Nos unimos <br>',
     highlight: 'al viaje',
     text_color: '#fff',
@@ -62,8 +62,8 @@ export const slides = [
   },
   {
     kicker: '科技',
-    background: `url("${wayLane16x9Image.src}")`,
-    background_movil: `url("${wayLane9x16Image.src}")`,
+    background: `url("${bigData16x9Image.src}")`,
+    background_movil: `url("${bigData9x16Image.src}")`,
     title: 'Movemos <br>',
     highlight: 'personas',
     text_color: '#000',

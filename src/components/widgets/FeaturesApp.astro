@@ -19,7 +19,7 @@ const {
   bg = await Astro.slots.render("bg"),
 } = Astro.props as Features;
 ---
-
+<div id="app-qrcode" class="md:h-2/5">
 <WidgetWrapper
   id={id}
   isDark={isDark}
@@ -44,3 +44,4 @@ const {
     }}
   />
 </WidgetWrapper>
+</div>

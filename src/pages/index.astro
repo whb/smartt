@@ -16,52 +16,54 @@ const metadata = {
 <Layout metadata={metadata}>
   <Swiper slides={slides} />
 
-  <FeaturesApp
-    id="features"
-    title="祥龙智运 App"
-    subtitle="在 祥龙智运 App 完成您的运输工作。"
-    items={[
-      {
-        title: '微信小程序',
-        icon: '/svg/frontend/mini.svg',
-      },
-      {
-        title: '安卓App',
-        icon: '/svg/frontend/robot.svg',
-      },
-      {
-        title: '网页版',
-        icon: '/svg/frontend/ie.svg',
-      },
-    ]}
-  />
+  <div class="md:h-screen">
+    <FeaturesApp
+      id="features"
+      title="祥龙智运 App"
+      subtitle="在 祥龙智运 App 完成您的运输工作。"
+      items={[
+        {
+          title: '微信小程序',
+          icon: '/svg/frontend/mini.svg',
+        },
+        {
+          title: '安卓App',
+          icon: '/svg/frontend/robot.svg',
+        },
+        {
+          title: '网页版',
+          icon: '/svg/frontend/ie.svg',
+        },
+      ]}
+    />
 
-  <!-- PhoneScreen Widget ******************* -->
-  <PhoneScreen
-    title="平台功能介绍"
-    items={[
-      {
-        title: '快捷接单',
-        description: '接收运单，一键触达。',
-      },
-      {
-        title: '流畅操作',
-        description: '装车卸车打卡拍照，一气呵成。',
-      },
-      {
-        title: '运费结算',
-        description: '方便快捷，10分钟运费到账。',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </PhoneScreen>
+    <!-- PhoneScreen Widget ******************* -->
+    <PhoneScreen
+      title="平台功能介绍"
+      items={[
+        {
+          title: '快捷接单',
+          description: '接收运单，一键触达。',
+        },
+        {
+          title: '流畅操作',
+          description: '装车卸车打卡拍照，一气呵成。',
+        },
+        {
+          title: '运费结算',
+          description: '方便快捷，10分钟运费到账。',
+        },
+      ]}
+      image={{
+        src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        alt: 'Colorful Image',
+      }}
+    >
+      <Fragment slot="bg">
+        <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      </Fragment>
+    </PhoneScreen>
+  </div>
 
   <!-- HighlightedPosts Widget ******* -->
 

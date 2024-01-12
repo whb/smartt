@@ -53,7 +53,7 @@ export const slides = [
     background_movil: `url("${carAftermarker9x16Image.src}")`,
     title: '车后市场<br>',
     highlight: '司机之家',
-    text_color: '#fff',
+    text_color: '#000',
     url_project: '',
     btn_href: '/portafolio/88680',
     btn_bg_color: '#57F1B1',

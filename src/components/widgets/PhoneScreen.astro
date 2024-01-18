@@ -60,7 +60,7 @@ const {
           defaultIcon="tabler:check"
           classes={{
             container: `gap-y-4 md:gap-y-8`,
-            panel: 'max-w-none',
+            panel: 'max-w-none    reveal fade-right',
             title: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
             description: 'text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2',
             icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1',
@@ -94,29 +94,74 @@ const {
   </div>
 </WidgetWrapper>
 
-<style>
-  .phone-mask {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: url('https://staticweb.keepcdn.com/staticShow/images/newhome/phone-848d0effca.png') no-repeat
-      center top /100%;
-  }
+<style is:global>
+.phone-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('https://staticweb.keepcdn.com/staticShow/images/newhome/phone-848d0effca.png') no-repeat
+    center top /100%;
+}
 
-  .screen {
-    position: absolute;
-    top: 18px;
-    left: 21px;
-    right: 21px;
-    bottom: 4px;
-    overflow: hidden;
-    border-radius: 8px 8px 0 0;
+.screen {
+  position: absolute;
+  top: 18px;
+  left: 21px;
+  right: 21px;
+  bottom: 4px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.active.fade-right {
+  animation: fade-right 1s ease-in;
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
   }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 </style>
 
 <script>
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+      console.log('active')
+    } else {
+      reveals[i].classList.remove("active");
+      console.log('deactive')
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
+
+
   function playPauseVideo() {
     const videos = document.querySelectorAll('video');
     videos.forEach((video) => {
